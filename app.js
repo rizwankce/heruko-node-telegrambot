@@ -43,9 +43,9 @@ var COMMANDS = {
     "dosth" : dosth
 };
 
-function runCommand(message) {
+var runCommand = function(message) {
     var msgtext = message.text;
-
+    console.log("RunCommand inside");
     if (msgtext.indexOf("/") != 0) return false; // no slash at beginning?
     var command = msgtext.substring(1, msgtext.indexOf(" "));
     if (COMMANDS[command] == null) return false; // not a valid command?
