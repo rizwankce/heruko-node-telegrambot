@@ -7,6 +7,6 @@
   },
   "dependencies": {
     "unirest": "~0.4.2",
-    "node-telegram-bot"
+    "node-telegram-bot" :"~0.0.16"
   }
 }
