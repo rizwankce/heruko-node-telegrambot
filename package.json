@@ -6,6 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "unirest": "~0.4.2"
+    "unirest": "~0.4.2",
+    "node-telegram-bot" : "~1.1.0"
   }
 }
