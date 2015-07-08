@@ -1,9 +1,9 @@
 {
   "name": "TelegramBot",
   "description": "TelegramBot with node",
-  "main": "app.js",
+  "main": "lieren_bot.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node lieren_bot.js"
   },
   "dependencies": {
     "unirest": "~0.4.2",
