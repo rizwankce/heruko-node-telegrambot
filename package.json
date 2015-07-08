@@ -1,0 +1,11 @@
+{
+  "name": "TelegramBot",
+  "description": "TelegramBot with node",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "unirest": "~0.4.2"
+  }
+}
