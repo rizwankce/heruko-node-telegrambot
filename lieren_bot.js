@@ -1,6 +1,7 @@
 var Bot = require('node-telegram-bot');
 var unirest = require('unirest');
 var algoliasearch = require('algoliasearch');
+var http = require('http');
 
 var client = algoliasearch('0H4SMABBSG', '9670d2d619b9d07859448d7628eea5f3');
 var index = client.initIndex('Post_production');
@@ -32,3 +33,9 @@ var bot = new Bot({
   });
 })
 .start();
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello Node.js\n');
+}).listen(process.env.PORT || 5000);
+console.log('Server running at http://127.0.0.1:'+process.env.PORT);
