@@ -13,26 +13,43 @@ var bot = new Bot({
 .on('message', function (message) {
   console.log(message);
   index.search(message.text, function searchDone(err, content) {
-    console.log(err, content);
-    var hits = content.hits;
-    var answerText = "\n";
-    for (var i = 0; i < 5; i++) {
-      j = i+1;
-      answerText = answerText + "\n"+j+". "+ hits[i].name + " - "+hits[i].tagline +"\n"+ hits[i].url+"\n";
+    if (err) {
+      var answer = {
+          chat_id : message.chat.id,
+          disable_web_page_preview : true,
+          text : "Oh Snap! I coudn't find any results from Product hunt. Check back later"
+      };
     }
-    var answer = {
-        chat_id : message.chat.id,
-        disable_web_page_preview : true,
-        text : "Here you go! Top five results for "+message.text+ answerText
-    };
-      bot.sendMessage(answer,function(){
-      console.log("sucess of the india");
-  });
-  var caps = message.text.toUpperCase();
+    else if (content.hits.length > 0){
+      var hits = content.hits;
+      var answerText = "\n";
+      var length = hits.length > 5 ? 5 : hits.length;
+      for (var i = 0; i < length; i++) {
+        j = i+1;
+        answerText = answerText + "\n"+j+". "+ hits[i].name + " - "+hits[i].tagline +"\n"+ hits[i].url+"\n";
+      }
+      var answer = {
+          chat_id : message.chat.id,
+          disable_web_page_preview : true,
+          text : "Here you go! Top five results for "+message.text+ answerText
+      };
 
+
+    }
+    else {
+      var answer = {
+          chat_id : message.chat.id,
+          disable_web_page_preview : true,
+          text : "Oh Snap! I coudn't find any results from Product hunt. Check back later"
+      };
+    }
+    bot.sendMessage(answer,function(){
+    console.log("Message has been sent"+answer);
+    });
   });
 })
 .start();
+
 
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
