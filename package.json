@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "unirest": "~0.4.2",
-    "node-telegram-bot" :"~0.0.16",
+    "node-telegram-bot" :"*",
     "algoliasearch" : "~3.7.2"
   }
 }
