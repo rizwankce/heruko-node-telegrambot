@@ -28,7 +28,7 @@ var bot = new Bot({
         var length = hits.length > 5 ? 5 : hits.length;
         for (var i = 0; i < length; i++) {
           j = i+1;
-          var urlstring = "www.producthunt.com/" + hits[i].url;
+          var urlstring = "www.producthunt.com" + hits[i].url;
           answerText = answerText + "\n"+j+". "+ hits[i].name + " - "+hits[i].tagline +"\n"+ urlstring +"\n";
         }
         var answer = {
