@@ -45,7 +45,8 @@ var bot = new Bot({
         };
       }
       bot.sendMessage(answer,function(){
-      console.log("Message has been sent"+answer);
+        console.log("\n Message has been sent \n with text"+answer.text);
+        console.log("\n chat id"+answer.chat_id);
       });
     });
   }
