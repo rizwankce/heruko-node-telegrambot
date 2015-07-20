@@ -28,7 +28,8 @@ var bot = new Bot({
         var length = hits.length > 5 ? 5 : hits.length;
         for (var i = 0; i < length; i++) {
           j = i+1;
-          answerText = answerText + "\n"+j+". "+ hits[i].name + " - "+hits[i].tagline +"\n"+ hits[i].url+"\n";
+          var urlstring = "www.producthunt.com/" + hits[i].url;
+          answerText = answerText + "\n"+j+". "+ hits[i].name + " - "+hits[i].tagline +"\n"+ urlstring +"\n";
         }
         var answer = {
             chat_id : message.chat.id,
