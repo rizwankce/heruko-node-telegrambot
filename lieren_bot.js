@@ -2,7 +2,9 @@ var Bot = require('node-telegram-bot');
 var unirest = require('unirest');
 var algoliasearch = require('algoliasearch');
 var http = require('http');
+var Parse = require('parse').Parse;
 
+Parse.initialize("r8uu3ZIRK4yv1i5cGok3sTqRsn4u31fG0POyhajV", "z4rctvKrXLMh02BRr8veUx4ZwF79ScaHVSgccFlp");
 var client = algoliasearch('0H4SMABBSG', '9670d2d619b9d07859448d7628eea5f3');
 var index = client.initIndex('Post_production');
 
@@ -12,6 +14,27 @@ var bot = new Bot({
 })
 .on('message', function (message) {
   console.log(message);
+  var SearchHistory = Parse.Object.extend("SearchHistory");
+  var searchHistory = new SearchHistory();
+
+  searchHistory.save({
+    messageId: message.message_id,
+    firstName: message.chat.first_name,
+    lastName: message.chat.last_name,
+    userName : message.chat.username,
+    date : message.date,
+    text : message.text
+  }, {
+    success: function(searchHistory) {
+      // The object was saved successfully.
+      console.log("message saved to parse "+searchHistory);
+    },
+    error: function(searchHistory, error) {
+    // The save failed.
+    // error is a Parse.Error with an error code and message.
+    console.log("Some probelm in saving Parse"+error);
+    }
+  });
   if (message.text) {
     index.search(message.text, function searchDone(err, content) {
       console.log("search results "+content);
