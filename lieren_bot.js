@@ -55,6 +55,9 @@ var bot = new Bot({
       disable_web_page_preview : true,
       text : "Hey trying to trick me or what? Send me some search text so that i can search on bahalf of you."
     };
+    bot.sendMessage(answer,function(){
+    console.log("Message has been sent"+answer);
+    });
   }
 
 })
