@@ -14,7 +14,7 @@ var bot = new Bot({
   console.log(message);
   if (message.text) {
     index.search(message.text, function searchDone(err, content) {
-      console.log("search results "+content.hits);
+      console.log("search results "+content);
       if (err) {
         var answer = {
             chat_id : message.chat.id,
