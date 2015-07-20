@@ -6,8 +6,8 @@
     "start": "node lieren_bot.js"
   },
   "dependencies": {
-    "unirest": "~0.4.2",
+    "unirest": "*",
     "node-telegram-bot" :"*",
-    "algoliasearch" : "~3.7.2"
+    "algoliasearch" : "*"
   }
 }
